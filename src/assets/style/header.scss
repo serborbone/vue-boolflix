@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+#header {
+  height: 80px;
+  background-color: #0E0E0E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:#fff;
+}
+
+.logo {
+  margin-left: 15px;
+  h1 {
+    color: $boolflix-color;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.search {
+  margin-right: 15px;
+  
+  input  {
+    padding: 7px;
+  }
+}
