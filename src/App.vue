@@ -45,9 +45,11 @@ export default {
         //richiesta axios per FILM
         axios.get(movieRequest)
         .then((movieRequest) => {
+          //console.log(movieRequest);
 
-          //console.log(tvRequest);
           this.movies = movieRequest.data.results;
+          console.log(this.movies)
+          
         })
 
         //richiesta axios per SERIE TV

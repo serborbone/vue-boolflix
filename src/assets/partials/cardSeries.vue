@@ -2,6 +2,11 @@
   <ul>
 
     <li class="series" v-for="(series, index) in seriesData" :key="index">
+        <!-- IMG SERIE -->
+        <div class="movie-img">
+          <img :src="'https://image.tmdb.org/t/p/w185' + series.poster_path">
+        </div>
+        
         <p> <span>Titolo:</span> {{series.name}} </p>
         <p> <span>Titolo originale:</span> {{series.original_name}} </p>
         <p> <span>Lingua originale:</span> <lang-flag :iso="series.original_language" /> </p>
