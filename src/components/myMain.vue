@@ -1,20 +1,27 @@
 <template>
   <main>
-    <ul>
-      <li v-for="(movie, index) in moviesList" :key="index">
-        <p><span>Titolo:</span> {{movie.title}}</p>
-        <p><span>Titolo originale:</span>  {{movie.original_title}}</p>
-        <p><span>Lingua originale:</span>  {{movie.original_language}}</p>
-        <p><span>Voto:</span>  {{movie.vote_average}}</p>
-      </li>
-    </ul>
+
+    <!-- FILM -->
+    <cardMovie :moviesData="moviesList"></cardMovie>
+    
+    <!-- SERIE TV -->
+    <cardSeries :seriesData="tvSeries"></cardSeries>
+
   </main>
 </template>
 
 <script>
+
+import cardMovie from '../assets/partials/cardMovie.vue';
+import cardSeries from '../assets/partials/cardSeries.vue';
+
 export default {
   name: 'myMain',
-  props: ['moviesList'],
+  components: {
+    cardMovie,
+    cardSeries,
+  },
+  props: ['moviesList', 'tvSeries'],
 }
 </script>
 

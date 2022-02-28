@@ -2,7 +2,7 @@
   <div id="app">
 
     <myHeader @valueInput="getList"></myHeader>
-    <myMain :moviesList="movies"></myMain>
+    <myMain :moviesList="movies" :tvSeries="tvSeries"></myMain>
 
   </div>
 </template>
@@ -28,6 +28,7 @@ export default {
       language: 'it-IT',
 
       movies: [],
+      tvSeries: [],
     }
 
   },
@@ -37,15 +38,23 @@ export default {
       getList(keyword) {
       
         const axios = require('axios');
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key='+ this.api_key + '&query=" ' + keyword + '"&language=' + this.language + ' ')
-        .then((response) => {
 
-          //console.log(response);
+        let movieRequest = 'https://api.themoviedb.org/3/search/movie?api_key='+ this.api_key + '&query=" ' + keyword + '"&language=' + this.language + ' ';
+        let tvRequest = 'https://api.themoviedb.org/3/search/tv?api_key='+ this.api_key + '&query=" ' + keyword + '"&language=' + this.language + ' ';
+        
+        //richiesta axios per FILM
+        axios.get(movieRequest)
+        .then((movieRequest) => {
 
-          this.movies = response.data.results;
+          //console.log(tvRequest);
+          this.movies = movieRequest.data.results;
+        })
 
-          console.log(this.movies);
+        //richiesta axios per SERIE TV
+        axios.get(tvRequest)
+        .then((tvRequest) => {
 
+          this.tvSeries = tvRequest.data.results;
 
         })
         .catch(function (error) {
@@ -58,11 +67,6 @@ export default {
 
   },
 
-  mounted() {
-
-    this.getList();
-
-  },
 }
 </script>
 
