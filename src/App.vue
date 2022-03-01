@@ -47,7 +47,6 @@ export default {
         .then((movieRequest) => {
 
           this.movies = movieRequest.data.results;
-          console.log(this.movies)
           
         })
 
