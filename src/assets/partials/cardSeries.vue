@@ -10,7 +10,10 @@
         <p> <span>Titolo:</span> {{series.name}} </p>
         <p> <span>Titolo originale:</span> {{series.original_name}} </p>
         <p> <span>Lingua originale:</span> <lang-flag :iso="series.original_language" /> </p>
-        <p> <span>Voto:</span> {{series.vote_average}} </p>
+        <p>
+          <span>Voto:</span>
+          <i v-for="i in 5" :key="i" class="fa-star" :class="(i < getVoteInt(index)) ? 'fa-solid' : 'fa-regular' "></i>
+        </p>
     </li>
 
   </ul>
@@ -27,6 +30,14 @@ export default {
   },
 
   props: ['seriesData'],
+
+  methods: {
+    getVoteInt(index) {
+        return Math.ceil(this.seriesData[index].vote_average / 2);
+      }
+  },
+
+
 }
 </script>
 

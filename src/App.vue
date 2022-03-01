@@ -45,7 +45,6 @@ export default {
         //richiesta axios per FILM
         axios.get(movieRequest)
         .then((movieRequest) => {
-          //console.log(movieRequest);
 
           this.movies = movieRequest.data.results;
           console.log(this.movies)

@@ -10,7 +10,10 @@
         <p><span>Titolo:</span> {{movies.title}}</p>
         <p><span>Titolo originale:</span>  {{movies.original_title}}</p>
         <p><span>Lingua originale:</span> <lang-flag :iso="movies.original_language" /> </p>
-        <p><span>Voto:</span>  {{movies.vote_average}}</p>
+        <p>
+          <span>Voto:</span>
+          <i v-for="i in 5" :key="i" class="fa-star" :class="(i < getVoteInt(index)) ? 'fa-solid' : 'fa-regular' "></i>
+        </p>
     </li>
 
   </ul>
@@ -27,6 +30,15 @@ export default {
   },
 
   props: ['moviesData'],
+
+  methods: {
+
+    getVoteInt(index) {
+      return Math.ceil(this.moviesData[index].vote_average / 2);
+    }
+
+  },
+
 }
 </script>
 
